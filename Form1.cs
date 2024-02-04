@@ -31,11 +31,17 @@ namespace PairOfEmployees
         {            
             try
             {
+                if (String.IsNullOrEmpty(CsvFilePath))
+                {
+                    throw new Exception("Please select a csv file!");
+                }
+
                 List<string> data = CsvFileReader.ReadCsvFile(CsvFilePath);
+                string dateTimeFormat = comboBox1.Text;
 
                 EmployeeDataService dataService = new EmployeeDataService();
-                dataService.SortEmployeeData(data.Skip(4).ToList());
-                List<EmployeePairResult> pairs = dataService.FindEmployeePairs();
+                dataService.SortEmployeeData(data.Skip(4).ToList(), dateTimeFormat);
+                List<EmployeePairResult> pairs = dataService.FindEmployeePair();
 
                 dataGridView1.DataSource = pairs;
 

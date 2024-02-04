@@ -4,16 +4,16 @@
     {
         public int ProjectId { get; set; }
         public List<Employee> Employees { get; set; }
-        public EmployeePairResult EmployeePair { get; set; }
-        public int RecordDaysWorkedOnProject { get; set; }
+        public List<EmployeePairResult> EmployeePairs { get; set; }
 
         public Project(int projectId)
         {
             ProjectId = projectId;
             Employees = new List<Employee>();
+            EmployeePairs = new List<EmployeePairResult>();
         }
 
-        public void FindPair()
+        public void FindPairs()
         {
             if (Employees.Count >= 2)
             {
@@ -22,7 +22,7 @@
                     int daysWorkedOnProject = 0;
 
                     Employee employee1 = Employees[i];
-                    Employee employee2 = Employees[i + 1];
+                    Employee employee2 = Employees[i + 1];                   
 
                     if (employee1.EmployeeId != employee2.EmployeeId &&
                         employee1.DateTo > employee2.DateFrom &&
@@ -52,10 +52,14 @@
                         }
                     }
 
-                    if (daysWorkedOnProject > RecordDaysWorkedOnProject)
+                    if (EmployeePairs.Any(x => x.EmployeeId1 == employee1.EmployeeId && x.EmployeeId2 == employee2.EmployeeId))
                     {
-                        RecordDaysWorkedOnProject = daysWorkedOnProject;
-                        EmployeePair = new EmployeePairResult(employee1.EmployeeId, employee2.EmployeeId, ProjectId, RecordDaysWorkedOnProject);
+                        EmployeePairs.Where(x => x.EmployeeId1 == employee1.EmployeeId && x.EmployeeId2 == employee2.EmployeeId).FirstOrDefault().DaysWorked += daysWorkedOnProject;
+                    }
+                    else
+                    {
+                        EmployeePairResult employeePair = new EmployeePairResult(employee1.EmployeeId, employee2.EmployeeId, ProjectId, daysWorkedOnProject);
+                        EmployeePairs.Add(employeePair);
                     }
                 }
             }

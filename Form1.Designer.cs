@@ -33,6 +33,8 @@
             filePathTextBox = new TextBox();
             runButton = new Button();
             dataGridView1 = new DataGridView();
+            label1 = new Label();
+            comboBox1 = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -44,7 +46,7 @@
             // 
             selectFileButton.Location = new Point(12, 12);
             selectFileButton.Name = "selectFileButton";
-            selectFileButton.Size = new Size(75, 23);
+            selectFileButton.Size = new Size(110, 23);
             selectFileButton.TabIndex = 0;
             selectFileButton.Text = "Select File";
             selectFileButton.UseVisualStyleBackColor = true;
@@ -52,17 +54,17 @@
             // 
             // filePathTextBox
             // 
-            filePathTextBox.Location = new Point(93, 13);
+            filePathTextBox.Location = new Point(128, 12);
             filePathTextBox.Name = "filePathTextBox";
             filePathTextBox.ReadOnly = true;
-            filePathTextBox.Size = new Size(334, 23);
+            filePathTextBox.Size = new Size(464, 23);
             filePathTextBox.TabIndex = 1;
             // 
             // runButton
             // 
-            runButton.Location = new Point(433, 13);
+            runButton.Location = new Point(12, 416);
             runButton.Name = "runButton";
-            runButton.Size = new Size(75, 23);
+            runButton.Size = new Size(107, 23);
             runButton.TabIndex = 2;
             runButton.Text = "Run";
             runButton.UseVisualStyleBackColor = true;
@@ -75,24 +77,45 @@
             dataGridView1.AllowUserToResizeColumns = false;
             dataGridView1.AllowUserToResizeRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(38, 41);
+            dataGridView1.Location = new Point(128, 42);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
-            dataGridView1.Size = new Size(444, 397);
+            dataGridView1.Size = new Size(464, 397);
             dataGridView1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(13, 55);
+            label1.Name = "label1";
+            label1.Size = new Size(106, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Select Date Format";
+            // 
+            // comboBox1
+            // 
+            comboBox1.FormattingEnabled = true;
+            comboBox1.Items.AddRange(new object[] { "Auto", "yyyy-MM-dd", "M/d/yyyy", "MM/dd/yyyy", "dd/MM/yyyy", "yyyy.MM.dd", "dd-MMM-yy", "MM.dd.yy" });
+            comboBox1.Location = new Point(12, 73);
+            comboBox1.Name = "comboBox1";
+            comboBox1.Size = new Size(110, 23);
+            comboBox1.TabIndex = 5;
+            comboBox1.Text = "Auto";
             // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(520, 450);
+            ClientSize = new Size(604, 450);
+            Controls.Add(comboBox1);
+            Controls.Add(label1);
             Controls.Add(dataGridView1);
             Controls.Add(runButton);
             Controls.Add(filePathTextBox);
             Controls.Add(selectFileButton);
             MaximizeBox = false;
-            MaximumSize = new Size(536, 489);
-            MinimumSize = new Size(536, 489);
+            MaximumSize = new Size(620, 489);
+            MinimumSize = new Size(620, 489);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Pair Of Employees";
@@ -112,5 +135,7 @@
         private DataGridViewTextBoxColumn Column2;
         private DataGridViewTextBoxColumn Column3;
         private DataGridViewTextBoxColumn Column4;
+        private Label label1;
+        private ComboBox comboBox1;
     }
 }
